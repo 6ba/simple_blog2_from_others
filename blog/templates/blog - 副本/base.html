@@ -1,0 +1,126 @@
+<!--
+    
+ @Name：不落阁整站模板源码
+ @Author：Absolutely
+ @Site：http://www.lyblogs.cn
+
+ -->
+{% load staticfiles %}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="{%  static 'blog/images/Logo_40.png' %}" type="image/x-icon">
+    <!--Layui-->
+    <link href="{%  static 'blog/plug/layui/css/layui.css' %}" rel="stylesheet" />
+    <!--font-awesome-->
+    <link href="{%  static 'blog/plug/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" />
+    <!--全局样式�?->
+    <link href="{%  static 'blog/css/global.css' %}" rel="stylesheet" />
+    <!-- 比较好用的代码着色插�?-->
+    <link href="{%  static 'blog/css/prettify.css' %}" rel="stylesheet" />
+    <!-- 本页样式�?-->
+    <link href="{%  static 'blog/css/detail.css' %}" rel="stylesheet" />
+	
+	{% block own_css %}
+	
+	{% endblock %}
+
+	</head>
+<body>
+    <!-- 导航 -->
+    <nav class="blog-nav layui-header">
+        <div class="blog-container">
+            <!-- QQ互联登陆 -->
+            <a href="javascript:;" class="blog-user">
+                <i class="fa fa-qq"></i>
+            </a>
+            <a href="javascript:;" class="blog-user layui-hide">
+                <img src="{%  static 'blog/images/my.jpg' %}" alt="Absolutely" title="Absolutely" />
+            </a>
+            <!-- 不落�?-->
+            <a class="blog-logo" href="/">半仙世界</a>
+            <!-- 导航菜单 -->
+            <ul class="layui-nav" lay-filter="nav">
+                 <li class="layui-nav-item">
+					<a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+				</li>
+				<li class="layui-nav-item layui-this">
+					<a href="/blog/articles/"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="/blog/resourses/"><i class="fa fa-tags fa-fw"></i>&nbsp;资源分享</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="/blog/timelines/"><i class="fa fa-road fa-fw"></i>&nbsp;点点滴滴</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="/blog/aboutme/"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+				</li>
+            </ul>
+            <!-- 手机和平板的导航开�?-->
+            <a class="blog-navicon" href="javascript:;">
+                <i class="fa fa-navicon"></i>
+            </a>
+        </div>
+    </nav>
+    <!-- 主体（一般只改变这里的内容） -->
+    {% block content %}
+	
+	{% endblock %}
+    <!-- 底部 -->
+    <footer class="blog-footer">
+        <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="http://aljs.pw">半仙世界</a><span>Design By actanble</span></p>
+        <p><a href="http://www.miibeian.gov.cn/" target="_blank">蜀ICP�?6029915�?1</a></p>
+    </footer>
+    <!--侧边导航-->
+    <ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+                 <li class="layui-nav-item">
+					<a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+				</li>
+				<li class="layui-nav-item layui-this">
+					<a href="/blog/articles/"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="/blog/resourses/"><i class="fa fa-tags fa-fw"></i>&nbsp;资源分享</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="/blog/timelines/"><i class="fa fa-road fa-fw"></i>&nbsp;点点滴滴</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="/blog/aboutme/"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+				</li>
+    </ul>
+    <!--分享窗体-->
+    <div class="blog-share layui-hide">
+        <div class="blog-share-body">
+            <div style="width: 200px;height:100%;">
+                <div class="bdsharebuttonbox">
+                    <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                    <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微�?></a>
+                    <a class="bds_weixin" data-cmd="weixin" title="分享到微�?></a>
+                    <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--遮罩-->
+    <div class="blog-mask animated layui-hide"></div>
+    <!-- layui.js -->
+    <script src="{%  static 'blog/plug/layui/layui.js' %}"></script>
+    <!-- 自定义全局脚本 -->
+    <script src="{%  static 'blog/js/global.js' %}"></script>
+    <!-- 比较好用的代码着色插�?-->
+    <script src="{%  static 'blog/js/prettify.js' %}"></script>
+    <!-- 本页脚本 -->
+	{% block own_js %}
+	{% endblock %}
+    <script src="{%  static 'blog/js/detail.js' %}"></script>
+</body>
+</html>

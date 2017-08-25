@@ -1,0 +1,50 @@
+﻿{% extends "blog/base.html" %}
+<!-- 主体（一般只改变这里的内容） -->
+{% block content %}
+    <div class="blog-body">
+        <div class="blog-container">
+            <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
+                <a href="/" title="网站首页">网站首页</a>
+                <a><cite>文章专栏</cite></a>
+            </blockquote>
+            <div class="blog-main">
+                <div class="blog-main-left">
+				{% if not blogs %}
+                    <div class="shadow" style="text-align:center;font-size:16px;padding:40px 15px;background:#fff;margin-bottom:15px;">
+                        未搜索到与【<span style="color: #FF5722;">keywords</span>】有关的文章，随便看看吧！
+                    </div>	
+					{% endif %}
+				{% for x in blogs %}
+                    <div class="article shadow">
+                        <div class="article-left">
+                            <img src="{{ x.pic.url }}" alt="" />
+                        </div>
+                        <div class="article-right">
+                            <div class="article-title">
+                                <a href="/blog/detail/{{x.id}}/">{{ x.title }}</a>
+                            </div>
+                            <div class="article-abstract">
+                                {{ x.summary}}
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="article-footer">
+                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ x.pub_date.date }}</span>
+                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;actanble</span>
+                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="/blog/tag/{{x.column.id}}/">{{ x.column.name }}</a></span>
+							  <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="/blog/lanmu/{{ x.column.lanmu.id }}/">{{ x.column.lanmu.name }}</a></span>
+                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;{{ x.comment_num }}</span>
+                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;{{ x.see_num }}</span>
+                        </div>
+                    </div>
+				{% endfor %}
+					
+					
+                </div>
+				{% include "blog/right.html" %}
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+	
+{% endblock %}

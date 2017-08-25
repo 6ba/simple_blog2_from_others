@@ -1,0 +1,85 @@
+﻿{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block own_css %}
+<link href="{%  static 'blog/css/detail.css' %}" rel="stylesheet" />
+{% endblock %}
+
+
+	{% block content %}
+	   <div class="blog-body">
+        <div class="blog-container">
+            <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
+                <a href="home.html" title="网站首页">网站首页</a>
+                <a href="article.html" title="文章专栏">文章专栏</a>
+                <a><cite>  {{ blog.title }} </cite></a>
+            </blockquote>
+            <div class="blog-main">
+                <div class="blog-main-left">
+                    <!-- 文章内容（使用Kingeditor富文本编辑器发表的） -->
+                    <div class="article-detail shadow">
+                        <div class="article-detail-title">
+                            {{ blog.title }}
+                        </div>
+                        <div class="article-detail-info">
+                            <span>编辑时间：{{ blog.pub_date }}</span>
+                            <span>作者：actanble </span>
+                            <span>浏览量：{{ blog.see_num }}</span>
+                        </div>
+                        <div class="article-detail-content">
+                           {{ blog.content | safe }}
+                        </div>
+                    </div>
+					
+					
+                    <!-- 评论区域 -->
+                    <div class="blog-module shadow" style="box-shadow: 0 1px 8px #a6a6a6;">
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-bottom:0">
+                            <legend>来说两句吧</legend>
+                            <div class="layui-field-box">
+							
+                                <form class="layui-form blog-editor" action="">
+                                    <div class="layui-form-item">
+                                        <textarea name="editorContent" lay-verify="content" id="remarkEditor" placeholder="请输入内容" class="layui-textarea layui-hide"></textarea>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <button class="layui-btn" lay-submit="formRemark" lay-filter="formRemark">提交评论</button>
+                                    </div>
+                                </form>
+								
+                            </div>
+                        </fieldset>
+                        <div class="blog-module-title">最新评论</div>
+                        <ul class="blog-comment">
+						
+						{% for comment in conmments %}
+                            <li>
+                                <div class="comment-parent">
+                                    <img src="" alt="absolutely" />
+                                    <div class="info">
+                                        <span class="username">{{ comment.user }}</span>
+                                        <span class="time">{{ comment.pub_date }}</span>
+                                    </div>
+                                    <div class="content">
+                                       {{comment.content }}
+                                    </div>
+                                </div>
+                            </li>
+						{% endfor %}
+						</ul>
+                    </div>
+					
+					
+                </div>
+			
+				{% include "blog/right.html" %}
+                <div class="clear"></div>
+            </div>
+        </div>
+</div>
+	{% endblock %}
+	
+	
+{% block own_js %}
+    <script src="{%  static 'blog/js/detail.js' %}"></script>
+{% endblock %}
+   
